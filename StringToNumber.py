@@ -44,16 +44,13 @@ def get_string(string):
         return 'Строка не может быть пустой'
 
     if len(words) == 1 and words[0] == 'hundred':
-        return 'Перед сотней должна быть цифра, указывающая на количество сотен'
+        return 'Перед словом hundred должно стоять число единичного формата'
 
     if len(words) == 1 and is_correct_word(words[0]):
         return get_number_from_word(words[0])
 
     if not is_correct_word(words[0]):
         return 'Слово - ' + words[0] + ' содержит ошибку'
-
-    if words.count('hundred') > 1:
-        return 'В строке не может быть несколько слов - hundred'
 
     if words[0] == 'zero':
         return 'Число не может начинаться с нуля'
@@ -96,6 +93,8 @@ def get_format(number):
         return "десятичного формата"
     if number in from11to19:
         return "формата 11-19"
+    if number == "hundred":
+        return "формата сотен"
 
 
 def is_correct_sequence(word_left, word_right):
